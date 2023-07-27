@@ -1,5 +1,6 @@
 import React from 'react';
 import Expenses from './components/Expenses/Expenses';
+import NewExpense from './components/NewExpense/NewExpense';
 
 interface Expense {
   id: string;
@@ -37,7 +38,10 @@ function Home() {
   ];
 
   return (
-    <Expenses {...expenses} />
+    <div>
+      <NewExpense />
+      <Expenses {...expenses} />
+    </div>
   )
 }
 
