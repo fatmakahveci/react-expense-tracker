@@ -23,7 +23,7 @@ const ExpenseForm = () => {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(values)
+        console.log(values);
     };
 
     return (
