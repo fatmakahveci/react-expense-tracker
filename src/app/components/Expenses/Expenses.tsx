@@ -1,11 +1,12 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 
 import ExpenseItem from './ExpenseItem';
 
 import './Expenses.css';
 import Card from '../UI/Card';
+import ExpensesFilter from './ExpensesFilter';
 
 interface Expense {
     id: string;
@@ -15,8 +16,15 @@ interface Expense {
 }
 
 const Expenses = (expenses: Expense[]) => {
+    const [ filteredYear, setFilteredYear ] = useState<string>('2020');
+
+    const filterChangeHandler: Function = (selectedYear: string) => {
+        setFilteredYear(selectedYear);
+    };
+
     return (
         <Card className="expenses">
+            <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler}/>
             <ExpenseItem
                 id={expenses[0].id}
                 title={expenses[0].title}

@@ -13,7 +13,6 @@ const NewExpense = (props: any) => {
             id: Date.now().toString()
         };
         props.onAddExpense(expenseData);
-        // console.log(expenseData);
     };
 
     return (
