@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense';
@@ -37,9 +39,13 @@ function Home() {
     },
   ];
 
+  const addExpenseHandler: Function = (expenses: Expense[]) => {
+    console.log(expenses);
+  };
+
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses {...expenses} />
     </div>
   )
