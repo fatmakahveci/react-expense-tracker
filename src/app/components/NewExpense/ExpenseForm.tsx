@@ -4,26 +4,27 @@ import React, { useState } from 'react';
 
 import './ExpenseForm.css';
 
-type Values = {
-    title: string,
-    amount: number,
-    date: Date
-}
+const ExpenseForm = (props: any) => {
 
-const ExpenseForm = () => {
-    const [values, setValues] = useState<Values>({
+    type FormData = {
+        title: string,
+        amount: number,
+        date: string
+    }
+
+    const [formData, setFormData] = useState<FormData>({
         title: '',
         amount: 0.0,
-        date: new Date()
+        date: new Date().toISOString().slice(0, 10)
     });
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValues({ ...values, [event.target.name]: event.target.value });
+        setFormData({ ...formData, [event.target.name]: event.target.value });
     };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(values);
+        props.onSaveExpenseData(formData);
     };
 
     return (
