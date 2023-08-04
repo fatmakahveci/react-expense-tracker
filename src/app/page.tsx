@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-// import Expenses from './components/Expenses/Expenses';
+import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense';
 
 import { Expense } from '../shared/types/Types';
@@ -41,7 +41,7 @@ function Home() {
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      {/* <Expenses items={expenses} /> */}
+      <Expenses items={expenses} />
     </div>
   )
 }
