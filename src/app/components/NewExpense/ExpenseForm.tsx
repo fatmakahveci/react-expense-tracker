@@ -21,16 +21,16 @@ let ExpenseForm: (props: FormikProps<FormModel>) => JSX.Element = () => {
         title: Yup.string()
             .min(2, 'Too short!')
             .max(30, 'Too long!')
-            .required('Required'),
+            .required('required'),
         amount: Yup.number()
             .min(0.0)
             .max(500.0)
-            .required('Required'),
+            .required('required'),
         date: Yup.date()
             .nonNullable()
             .min(new Date(2020, 1, 1))
             .max(new Date())
-            .required()
+            .required('required')
     });
 
     return (
