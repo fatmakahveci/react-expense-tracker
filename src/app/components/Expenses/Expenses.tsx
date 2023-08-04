@@ -8,12 +8,7 @@ import './Expenses.css';
 import Card from '../UI/Card';
 import ExpensesFilter from './ExpensesFilter';
 
-interface Expense {
-    id: string;
-    title: string;
-    amount: number;
-    date: Date;
-}
+import { Expense } from '../../../shared/types/Types';
 
 interface ExpensesProps {
     items: Expense[];

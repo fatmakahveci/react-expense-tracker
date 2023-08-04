@@ -1,49 +1,112 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 import './ExpenseForm.css';
 
-const ExpenseForm = (props: any) => {
+import { Formik, FormikProps } from 'formik';
+import * as Yup from 'yup';
 
-    type FormData = {
-        title: string,
-        amount: number,
-        date: string
-    }
+interface FormModel {
+    title: string,
+    amount: number,
+    date: Date | undefined
+}
 
-    const [formData, setFormData] = useState<FormData>({
-        title: '',
-        amount: 0.0,
-        date: new Date().toISOString().slice(0, 10)
+let ExpenseForm: (props: FormikProps<FormModel>) => JSX.Element = () => {
+    const FormSchema = Yup.object({
+        title: Yup.string()
+            .min(2, 'Too short!')
+            .max(30, 'Too long!')
+            .required('Required'),
+        amount: Yup.number()
+            .min(0.0)
+            .max(500.0)
+            .required('Required'),
+        date: Yup.date()
+            .nonNullable()
+            .min(new Date(2020, 1, 1))
+            .max(new Date())
+            .required()
     });
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData({ ...formData, [event.target.name]: event.target.value });
-    };
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        props.onSaveExpenseData(formData);
-    };
-
     return (
-        <form onSubmit={handleSubmit}>
-            <div className='new-expense__controls'>
-                <div className='new-expense__control'>
-                    <label>Title<input type="text" onChange={handleChange} name={"title"} /></label>
-                </div>
-                <div className='new-expense__control'>
-                    <label>Amount<input type="number" min="0.01" step="0.01" onChange={handleChange} name={"amount"} /></label>
-                </div>
-                <div className='new-expense__control'>
-                    <label>Date<input type="date" min="2000-01-01" max="2050-01-01" onChange={handleChange} name={"date"} /></label>
-                </div>
-                <div className='new-expense__actions'>
-                    <button type="submit">Add Expense</button>
-                </div>
-            </div>
-        </form>
+        <Formik<FormModel>
+            initialValues={{
+                title: '',
+                amount: 0.0,
+                date: new Date()
+            }}
+            onSubmit={(values: FormModel) => {
+                alert(JSON.stringify(values));
+            }}
+            validationSchema={FormSchema}
+        >
+            {({ handleSubmit, errors, values, handleChange, setFieldValue }) => {
+                let dateOnChange = (date: Date | null) => {
+                    setFieldValue("date", date);
+                }
+                return (
+                    <form onSubmit={handleSubmit}>
+                        <div className='new-expense__controls'>
+                            <div className='new-expense__control'>
+                                <label htmlFor='title'>Title</label>
+                                <input
+                                    type="text"
+                                    name="title"
+                                    placeholder="Title"
+                                    value={values.title}
+                                    onChange={handleChange}
+                                />
+                                {errors.title ? (
+                                    <div className="error">
+                                        {errors.title}
+                                    </div>
+                                ) : null}
+                            </div>
+                            <div className='new-expense__control'>
+                                <label htmlFor='amount'>Amount</label>
+                                <input
+                                    type="number"
+                                    min="0.0"
+                                    step="0.1"
+                                    name="amount"
+                                    placeholder="Amount"
+                                    value={values.amount}
+                                    onChange={handleChange}
+                                />
+                                {errors.amount ? (
+                                    <div className="error">
+                                        {errors.amount}
+                                    </div>
+                                ) : null}
+                            </div>
+                            <div className='new-expense__control'>
+                                <label htmlFor='date'>Date</label>
+                                <DatePicker
+                                    name="date"
+                                    placeholderText='Date'
+                                    value={values.date?.toLocaleDateString()}
+                                    selected={values.date}
+                                    onChange={dateOnChange}
+                                />
+                                {errors.date ? (
+                                    <div className="error">
+                                        {errors.date}
+                                    </div>
+                                ) : null}
+                            </div>
+                            <div className='new-expense__actions'>
+                                <button type="submit">Add Expense</button>
+                            </div>
+                        </div>
+                    </form>
+                )
+            }}
+        </Formik>
     );
 }
 

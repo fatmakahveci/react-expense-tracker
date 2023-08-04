@@ -1,15 +1,10 @@
 "use client";
 
 import React from 'react';
-import Expenses from './components/Expenses/Expenses';
+// import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense';
 
-interface Expense {
-  id: string;
-  title: string;
-  amount: number;
-  date: Date;
-}
+import { Expense } from '../shared/types/Types';
 
 function Home() {
   let expenses: Expense[] = [
@@ -46,7 +41,7 @@ function Home() {
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses items={expenses} />
+      {/* <Expenses items={expenses} /> */}
     </div>
   )
 }

@@ -5,12 +5,7 @@ import ExpenseDate from './ExpenseDate';
 
 import './ExpenseItem.css';
 
-interface Expense {
-    id: string;
-    title: string;
-    amount: number;
-    date: Date;
-}
+import { Expense } from '../../../shared/types/Types';
 
 const ExpenseItem = (expense: Expense) => {
     return (
