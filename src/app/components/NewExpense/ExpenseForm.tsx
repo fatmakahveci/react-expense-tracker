@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import './ExpenseForm.css';
 
-import { Formik, FormikProps } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 interface FormModel {
@@ -16,7 +16,7 @@ interface FormModel {
     date: Date | undefined
 }
 
-let ExpenseForm: (props: FormikProps<FormModel>) => JSX.Element = () => {
+let ExpenseForm: (React.FC<FormModel>) = (props: Function) => {
     const FormSchema = Yup.object({
         title: Yup.string()
             .min(2, 'Too short!')
@@ -41,7 +41,7 @@ let ExpenseForm: (props: FormikProps<FormModel>) => JSX.Element = () => {
                 date: new Date()
             }}
             onSubmit={(values: FormModel) => {
-                alert(JSON.stringify(values));
+                props.onSaveExpenseData(values);
             }}
             validationSchema={FormSchema}
         >
