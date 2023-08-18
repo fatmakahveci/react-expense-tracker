@@ -1,4 +1,4 @@
-import React, { useState, FC } from 'react';
+import React from 'react';
 
 import Card from '../UI/Card';
 import ExpenseDate from './ExpenseDate';
@@ -7,7 +7,8 @@ import './ExpenseItem.css';
 
 import { Expense } from '../../../shared/types/Types';
 
-const ExpenseItem = (expense: Expense) => {
+const ExpenseItem: React.FC<{expense: Expense}> = ({expense}): JSX.Element => {
+
     return (
         <Card className='expense-item'>
             <ExpenseDate date={expense.date} />

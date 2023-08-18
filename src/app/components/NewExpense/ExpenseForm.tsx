@@ -16,7 +16,7 @@ interface FormModel {
     date: Date | undefined
 }
 
-let ExpenseForm: (React.FC<FormModel>) = (props: Function) => {
+const ExpenseForm = (props: any): any => {
     const FormSchema = Yup.object({
         title: Yup.string()
             .min(2, 'Too short!')
@@ -32,6 +32,7 @@ let ExpenseForm: (React.FC<FormModel>) = (props: Function) => {
             .max(new Date())
             .required('required')
     });
+    console.log(props);
 
     return (
         <Formik<FormModel>

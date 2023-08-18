@@ -2,17 +2,23 @@
 
 import React from 'react';
 
+import { Expense } from '../../../shared/types/Types';
+
 import ExpenseForm from './ExpenseForm';
 
 import './NewExpense.css';
 
-const NewExpense = (props: any) => {
-    const saveExpenseDataHandler: Function = (enteredExpenseData: FormData) => {
-        const expenseData = {
-            ...enteredExpenseData,
+type Props = {
+    onAddExpense: Function;
+}
+
+const NewExpense: React.FC<Props> = ({ onAddExpense }) => {
+    const saveExpenseDataHandler: Function = (enteredExpense: FormData) => {
+        const expense = {
+            ...enteredExpense,
             id: Date.now().toString()
         };
-        props.onAddExpense(expenseData);
+        onAddExpense(expense);
     };
 
     return (

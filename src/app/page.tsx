@@ -6,7 +6,7 @@ import NewExpense from './components/NewExpense/NewExpense';
 
 import { Expense } from '../shared/types/Types';
 
-let DUMMY_EXPENSES: Expense[] = [
+const DUMMY_EXPENSES: Array<Expense> = [
   {
     id: 'e1',
     title: 'Toilet Paper',
@@ -45,7 +45,7 @@ function Home() {
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses items={expenses} />
+      <Expenses expenses={expenses} />
     </div>
   )
 }
