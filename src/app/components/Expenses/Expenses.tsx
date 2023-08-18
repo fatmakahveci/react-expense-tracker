@@ -16,11 +16,15 @@ const Expenses: React.FC<ExpenseListProps> = ({ expenses }): JSX.Element => {
     const filterChangeHandler: Function = (selectedYear: string) => {
         setFilteredYear(selectedYear);
     };
+
+    const filteredExpenses = expenses.filter(expense => {
+        return expense.date.getFullYear().toString() === filteredYear;
+      });
     
     return (
         <Card className="expenses">
             <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler}/>
-            {expenses.map(expense => <ExpenseItem key={expense.id} expense={expense} />)}
+            {filteredExpenses.map(expense => <ExpenseItem key={expense.id} expense={expense} />)}
         </Card>
     );
 }

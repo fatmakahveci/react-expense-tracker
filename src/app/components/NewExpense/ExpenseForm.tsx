@@ -32,7 +32,6 @@ const ExpenseForm = (props: any): any => {
             .max(new Date())
             .required('required')
     });
-    console.log(props);
 
     return (
         <Formik<FormModel>

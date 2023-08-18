@@ -2,8 +2,6 @@
 
 import React from 'react';
 
-import { Expense } from '../../../shared/types/Types';
-
 import ExpenseForm from './ExpenseForm';
 
 import './NewExpense.css';
