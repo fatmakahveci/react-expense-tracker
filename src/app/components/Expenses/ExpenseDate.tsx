@@ -1,12 +1,11 @@
 import React from 'react';
-
 import './ExpenseDate.css';
 
 const ExpenseDate: React.FC<{date: Date}> = ({ date }) => {
 
-    const month = date.toLocaleString('en-US', { month: 'long' });
-    const day = date.toLocaleString('en-US', { day: '2-digit' });
-    const year = date.getFullYear();
+    const month: string = date.toLocaleString('en-US', { month: 'long' });
+    const day: string = date.toLocaleString('en-US', { day: '2-digit' });
+    const year: number = date.getFullYear();
 
     return (
         <div className='expense-date'>
