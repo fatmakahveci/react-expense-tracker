@@ -2,8 +2,13 @@ import React from 'react';
 
 import './Card.css';
 
-const Card = (props: any) => {
-    return <div className={'card ' + props.className}>{props.children}</div>;
+type Props = {
+    className: string;
+    children: any;
+};
+
+const Card: (React.FC<Props>) = ({ className, children }) => {
+    return <div className={'card ' + className}>{children}</div>;
 }
 
 export default Card;

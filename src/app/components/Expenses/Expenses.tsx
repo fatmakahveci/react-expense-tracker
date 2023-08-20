@@ -1,15 +1,13 @@
 "use client";
 
 import React, { useState } from 'react';
+import ExpenseItem from './ExpenseItem';
 import './Expenses.css';
 import Card from '../UI/Card';
 import ExpensesFilter from './ExpensesFilter';
 import { Expense } from '../../../shared/types/Types';
-import ExpensesList from './ExpensesList';
 
 type Props = {
-    selected: string;
-    onChangeFilter: Function;
     expenses: Expense[];
 };
 
@@ -27,7 +25,14 @@ const Expenses: React.FC<Props> = ({ expenses }): JSX.Element => {
     return (
         <Card className="expenses">
             <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
-            <ExpensesList expenses={filteredExpenses} />
+            {
+                filteredExpenses.length === 0 ?
+                    (
+                        <p>No expenses found.</p>
+                    ) : (
+                        filteredExpenses.map(expense => <ExpenseItem key={expense.id} expense={expense} />)
+                    )
+            }
         </Card>
     );
 }

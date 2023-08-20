@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense';
-
 import { Expense } from '../shared/types/Types';
 
 const DUMMY_EXPENSES: Array<Expense> = [
@@ -33,11 +32,11 @@ const DUMMY_EXPENSES: Array<Expense> = [
   },
 ];
 
-function Home() {
-  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+const Home = ({ }) => {
+  const [expensesList, setExpensesList] = useState(DUMMY_EXPENSES);
 
   const addExpenseHandler = (expense: Expense): void => {
-    setExpenses(prevExpenses => {
+    setExpensesList(prevExpenses => {
       return [expense, ...prevExpenses];
     });
   };
@@ -45,7 +44,7 @@ function Home() {
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses expenses={expenses} />
+      <Expenses expenses={expensesList} />
     </div>
   )
 }
