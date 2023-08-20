@@ -7,7 +7,7 @@ import './ExpenseForm.css';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-interface FormModel {
+type FormModel = {
     title: string,
     amount: number,
     date: Date | undefined

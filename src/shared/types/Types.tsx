@@ -4,7 +4,3 @@ export interface Expense {
     amount: number;
     date: Date;
 }
-
-export interface ExpenseListProps {
-    expenses: Expense[];
-}
