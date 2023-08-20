@@ -9,17 +9,18 @@ type Props = {
 }
 
 const ExpensesList: React.FC<Props> = ({ expenses }) => {
-    {
-        expenses.length === 0 ?
-            (
-                <p>No expenses found.</p>
-            ) : (
-                expenses.map((expense: Expense) => <ExpenseItem key={expense.id} expense={expense} />)
-            )
-    }
 
     return (
-        <ul></ul>
+        <ul className="expenses-list">
+            {
+                expenses.length === 0 ?
+                    (
+                        <p>No expenses found.</p>
+                    ) : (
+                        expenses.map(expense => <ExpenseItem key={expense.id} expense={expense} />)
+                    )
+            }
+        </ul>
     );
 };
 
