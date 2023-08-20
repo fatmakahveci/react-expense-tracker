@@ -1,10 +1,9 @@
-import React from 'react';
+"use client";
 
+import React from 'react';
 import Card from '../UI/Card';
 import ExpenseDate from './ExpenseDate';
-
 import './ExpenseItem.css';
-
 import { Expense } from '../../../shared/types/Types';
 
 const ExpenseItem: React.FC<{expense: Expense}> = ({expense}): JSX.Element => {
