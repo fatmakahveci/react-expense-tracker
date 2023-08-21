@@ -46,7 +46,6 @@ const Home = ({ }): JSX.Element => {
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses expenses={expensesList} />
-      <ExpensesChart expenses={expensesList} />
     </div>
   )
 }

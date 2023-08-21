@@ -6,6 +6,7 @@ import Card from '../UI/Card';
 import ExpensesFilter from './ExpensesFilter';
 import { Expense } from '../../../shared/types/Types';
 import ExpensesList from './ExpensesList';
+import ExpensesChart from './ExpensesChart';
 
 type Props = {
     expenses: Expense[];
@@ -25,6 +26,7 @@ const Expenses: React.FC<Props> = ({ expenses }): JSX.Element => {
     return (
         <Card className="expenses">
             <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
+            <ExpensesChart expenses={filteredExpenses} />
             <ExpensesList expenses={filteredExpenses} />
         </Card>
     );

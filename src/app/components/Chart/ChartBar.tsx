@@ -13,8 +13,9 @@ const ChartBar: React.FC<Props> = ({ value, maxValue, label }): JSX.Element => {
     let barFillHeight: string = '0%';
 
     if (maxValue > 0) {
-        barFillHeight = `{Math.round((value / maxValue)) * 100}%`;
+        barFillHeight = `${Math.round((value / maxValue) * 100)}%`;
     }
+    console.log(maxValue, value, barFillHeight);
 
     return (
         <div className="chart-bar">

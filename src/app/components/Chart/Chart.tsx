@@ -8,7 +8,8 @@ import { DataPoint } from "@/shared/types/Types";
 const Chart: React.FC<{ dataPoints: DataPoint[] }> = ({ dataPoints }): JSX.Element => {
     const dataPointValues = dataPoints.map(dataPoint => dataPoint.value);
     const totalMaximum = Math.max(...dataPointValues);
-
+    console.log(totalMaximum);
+    console.log(dataPointValues);
     return (
         <div className="chart">
             {dataPoints.map((dataPoint: DataPoint) => (
