@@ -9,7 +9,7 @@ type Props = {
     expenses: Expense[];
 }
 
-const ExpensesList: React.FC<Props> = ({ expenses }) => {
+const ExpensesList: React.FC<Props> = ({ expenses }): JSX.Element => {
     if (expenses.length === 0) {
         return (
             <h2 className="expenses-list__fallback">No expenses found.</h2>

@@ -4,7 +4,7 @@ import React from "react";
 import Chart from "../Chart/Chart";
 import { Expense } from "@/shared/types/Types";
 
-const ExpensesChart: React.FC<{ expenses: Expense[] }> = ({ expenses }) => {
+const ExpensesChart: React.FC<{ expenses: Expense[] }> = ({ expenses }): JSX.Element => {
     const chartDataPoints = [
         { label: 'Jan', value: 0 },
         { label: 'Feb', value: 0 },
@@ -25,7 +25,7 @@ const ExpensesChart: React.FC<{ expenses: Expense[] }> = ({ expenses }) => {
         chartDataPoints[expenseMonth].value += expense.amount;
     }
     return (
-        <div></div>
+        <Chart dataPoints={chartDataPoints} />
     );
 }
 

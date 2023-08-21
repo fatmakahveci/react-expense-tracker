@@ -33,7 +33,7 @@ const DUMMY_EXPENSES: Array<Expense> = [
   },
 ];
 
-const Home = ({ }) => {
+const Home = ({ }): JSX.Element => {
   const [expensesList, setExpensesList] = useState(DUMMY_EXPENSES);
 
   const addExpenseHandler = (expense: Expense): void => {

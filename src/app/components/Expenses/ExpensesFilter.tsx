@@ -8,7 +8,7 @@ type Props = {
     onChangeFilter: Function;
 }
 
-const ExpensesFilter: React.FC<Props> = ({ selected, onChangeFilter }) => {
+const ExpensesFilter: React.FC<Props> = ({ selected, onChangeFilter }): JSX.Element => {
     const dropdownChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
         onChangeFilter(e.target.value);
     }

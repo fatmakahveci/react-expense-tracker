@@ -7,7 +7,7 @@ type Props = {
     children: any;
 };
 
-const Card: (React.FC<Props>) = ({ className, children }) => {
+const Card: (React.FC<Props>) = ({ className, children }): JSX.Element => {
     return <div className={'card ' + className}>{children}</div>;
 }
 

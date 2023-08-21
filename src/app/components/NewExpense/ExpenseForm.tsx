@@ -10,10 +10,14 @@ import * as Yup from 'yup';
 type FormModel = {
     title: string,
     amount: number,
-    date: Date | undefined
+    date: Date | undefined,
+};
+
+type Props = {
+    onSaveExpenseData: Function,
 }
 
-const ExpenseForm = (props: any): any => {
+const ExpenseForm: React.FC<Props> = ({ onSaveExpenseData }): JSX.Element => {
     const FormSchema = Yup.object({
         title: Yup.string()
             .min(2, 'Too short!')
@@ -38,7 +42,7 @@ const ExpenseForm = (props: any): any => {
                 date: new Date()
             }}
             onSubmit={(values: FormModel) => {
-                props.onSaveExpenseData(values);
+                onSaveExpenseData(values);
             }}
             validationSchema={FormSchema}
         >

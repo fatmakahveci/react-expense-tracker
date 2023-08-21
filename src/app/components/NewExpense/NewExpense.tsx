@@ -8,7 +8,7 @@ type Props = {
     onAddExpense: Function;
 }
 
-const NewExpense: React.FC<Props> = ({ onAddExpense }) => {
+const NewExpense: React.FC<Props> = ({ onAddExpense }): JSX.Element => {
     const saveExpenseDataHandler: Function = (enteredExpense: FormData) => {
         const expense = {
             ...enteredExpense,
