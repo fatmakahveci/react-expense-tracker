@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import './Card.css';
 
 type Props = {
     className: string;
-    children: any;
+    children: ReactNode;
 };
 
 const Card: (React.FC<Props>) = ({ className, children }): JSX.Element => {
