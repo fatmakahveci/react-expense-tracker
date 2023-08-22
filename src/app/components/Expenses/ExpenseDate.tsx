@@ -1,9 +1,9 @@
 "use client";
 
-import React from 'react';
+import { FC } from 'react';
 import './ExpenseDate.css';
 
-const ExpenseDate: React.FC<{ date: Date }> = ({ date }): JSX.Element => {
+const ExpenseDate: FC<{ date: Date }> = ({ date }): JSX.Element => {
 
     const month: string = date.toLocaleString('en-US', { month: 'long' });
     const day: string = date.toLocaleString('en-US', { day: '2-digit' });

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 import './Card.css';
 
@@ -7,7 +7,7 @@ type Props = {
     children: ReactNode;
 };
 
-const Card: (React.FC<Props>) = ({ className, children }): JSX.Element => {
+const Card: (FC<Props>) = ({ className, children }): JSX.Element => {
     return <div className={'card ' + className}>{children}</div>;
 }
 

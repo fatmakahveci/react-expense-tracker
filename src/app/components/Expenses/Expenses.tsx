@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import { FC, useState } from 'react';
 import './Expenses.css';
 import Card from '../UI/Card';
 import ExpensesFilter from './ExpensesFilter';
@@ -12,7 +12,7 @@ type Props = {
     expenses: Expense[];
 };
 
-const Expenses: React.FC<Props> = ({ expenses }): JSX.Element => {
+const Expenses: FC<Props> = ({ expenses }): JSX.Element => {
     const [filteredYear, setFilteredYear] = useState<string>('2020');
 
     const filterChangeHandler: Function = (selected: string) => {

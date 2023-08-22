@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import { ChangeEvent, FC } from "react";
 import './ExpensesFilter.css';
 
 type Props = {
@@ -8,8 +8,8 @@ type Props = {
     onChangeFilter: Function;
 }
 
-const ExpensesFilter: React.FC<Props> = ({ selected, onChangeFilter }): JSX.Element => {
-    const dropdownChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+const ExpensesFilter: FC<Props> = ({ selected, onChangeFilter }): JSX.Element => {
+    const dropdownChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
         onChangeFilter(e.target.value);
     }
 

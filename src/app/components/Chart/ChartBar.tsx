@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import { FC } from "react";
 import "./ChartBar.css";
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
     label: string;
 };
 
-const ChartBar: React.FC<Props> = ({ value, maxValue, label }): JSX.Element => {
+const ChartBar: FC<Props> = ({ value, maxValue, label }): JSX.Element => {
     let barFillHeight: string = '0%';
 
     if (maxValue > 0) {

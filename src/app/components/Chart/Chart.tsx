@@ -1,11 +1,11 @@
 "use client";
 
-import React from "react";
+import { FC } from "react";
 import ChartBar from "./ChartBar";
 import "./Chart.css";
 import { DataPoint } from "@/shared/types/Types";
 
-const Chart: React.FC<{ dataPoints: DataPoint[] }> = ({ dataPoints }): JSX.Element => {
+const Chart: FC<{ dataPoints: DataPoint[] }> = ({ dataPoints }): JSX.Element => {
     const dataPointValues = dataPoints.map(dataPoint => dataPoint.value);
     const totalMaximum = Math.max(...dataPointValues);
 

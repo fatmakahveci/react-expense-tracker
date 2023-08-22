@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
+import { FC } from "react";
 import Chart from "../Chart/Chart";
 import { Expense } from "@/shared/types/Types";
 
-const ExpensesChart: React.FC<{ expenses: Expense[] }> = ({ expenses }): JSX.Element => {
+const ExpensesChart: FC<{ expenses: Expense[] }> = ({ expenses }): JSX.Element => {
     const chartDataPoints = [
         { label: 'Jan', value: 0 },
         { label: 'Feb', value: 0 },

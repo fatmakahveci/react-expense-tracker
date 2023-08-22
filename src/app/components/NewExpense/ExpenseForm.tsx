@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import { FC } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './ExpenseForm.css';
@@ -17,7 +17,7 @@ type Props = {
     onSaveExpenseData: Function,
 }
 
-const ExpenseForm: React.FC<Props> = ({ onSaveExpenseData }): JSX.Element => {
+const ExpenseForm: FC<Props> = ({ onSaveExpenseData }): JSX.Element => {
     const FormSchema = Yup.object({
         title: Yup.string()
             .min(2, 'Too short!')
