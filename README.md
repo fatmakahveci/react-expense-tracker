@@ -5,38 +5,56 @@
 [![Last commit](https://img.shields.io/github/last-commit/fatmakahveci/react-expense-tracker)](https://github.com/fatmakahveci/react-expense-tracker/commits/main)
 [![License](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](LICENSE.md)
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+A type-safe expense tracking interface built with Next.js. Add expenses, filter them by year, and review spending through a responsive chart.
+
+## Highlights
+
+- Create expenses with a title, amount, and date
+- Filter the expense list by year
+- Visualize monthly spending with reusable chart components
+- Keep UI state and domain models typed with TypeScript
+
+## Technology
+
+- Next.js
+- React
+- TypeScript
+- Formik
+- Yup
+- Tailwind CSS
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 20 or newer
+- npm
+
+### Installation
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Quality Checks
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+npm run lint
+npm run build
+```
 
-## Learn More
+## Repository Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `src/app/components/Expenses` — expense list, filtering, and chart integration
+- `src/app/components/NewExpense` — expense creation form
+- `src/app/components/Chart` — reusable visualization components
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Resources
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# react-expense-tracker
+- [Changelog](CHANGELOG.md)
+- [Contributing guide](.github/CONTRIBUTING.md)
+- [Security policy](.github/SECURITY.md)
+- [License](LICENSE.md)
