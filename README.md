@@ -1,3 +1,10 @@
+# Expense Tracker
+
+[![Next.js](https://img.shields.io/badge/Next.js-React-000000?logo=next.js&logoColor=white)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Last commit](https://img.shields.io/github/last-commit/fatmakahveci/react-expense-tracker)](https://github.com/fatmakahveci/react-expense-tracker/commits/main)
+[![License](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](LICENSE.md)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
