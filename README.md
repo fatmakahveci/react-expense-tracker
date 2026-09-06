@@ -13,6 +13,13 @@ A type-safe expense tracking interface built with Next.js. Add expenses, filter 
 - Filter the expense list by year
 - Visualize monthly spending with reusable chart components
 - Keep UI state and domain models typed with TypeScript
+- Save expenses in this browser across reloads, including an empty list
+- Edit expenses, delete them, and undo the most recent deletion
+- Export expenses as CSV with spreadsheet-formula protection
+
+Data stays in browser local storage; this is not a hosted account or backup
+service. Export CSV before clearing browser data. Invalid saved data is left
+untouched and a warning explains that changes are temporary.
 
 ## Technology
 
@@ -33,7 +40,7 @@ A type-safe expense tracking interface built with Next.js. Add expenses, filter 
 ### Installation
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
@@ -43,8 +50,15 @@ Open http://localhost:3000.
 
 ```bash
 npm run lint
+npm test
+npx tsc --noEmit
 npm run build
+npx playwright install chromium
+npx playwright test
 ```
+
+Browser tests use an isolated browser context and a local production server.
+They cover persistence, editing, deletion, undo, CSV download, and empty storage.
 
 ## Repository Structure
 

@@ -28,6 +28,7 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "@types/react-datepicker": "^4.15.0"
   },
   "overrides": {

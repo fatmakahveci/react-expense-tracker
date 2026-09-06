@@ -12,7 +12,7 @@ const NewExpense: FC<Props> = ({ onAddExpense }): JSX.Element => {
     const saveExpenseDataHandler: Function = (enteredExpense: FormData) => {
         const expense = {
             ...enteredExpense,
-            id: Date.now().toString()
+            id: crypto.randomUUID()
         };
         onAddExpense(expense);
     };
