@@ -6,9 +6,10 @@ import './ExpensesFilter.css';
 type Props = {
     selected: string;
     onChangeFilter: Function;
+    years: number[];
 }
 
-const ExpensesFilter: FC<Props> = ({ selected, onChangeFilter }): JSX.Element => {
+const ExpensesFilter: FC<Props> = ({ selected, onChangeFilter, years }): JSX.Element => {
     const dropdownChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
         onChangeFilter(e.target.value);
     }
@@ -18,11 +19,8 @@ const ExpensesFilter: FC<Props> = ({ selected, onChangeFilter }): JSX.Element =>
             <div className="expenses-filter__control">
                 <label>Filter by year
                     <select value={selected} onChange={dropdownChangeHandler}>
-                        <option value='2023'>2023</option>
-                        <option value='2022'>2022</option>
-                        <option value='2021'>2021</option>
-                        <option value='2020'>2020</option>
-                        <option value='2019'>2019</option>
+                        <option value="all">All years</option>
+                        {years.map(year => <option key={year} value={year}>{year}</option>)}
                     </select>
                 </label>
             </div>
