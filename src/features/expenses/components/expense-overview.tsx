@@ -10,7 +10,7 @@ import ExpenseChart from '@/features/expenses/components/expense-chart';
 
 type Props = {
     expenses: Expense[];
-    onUpdate: (expense: Expense) => void;
+    onUpdate: (expense: Expense, original: Expense) => Promise<boolean>;
     onDelete: (expense: Expense) => void;
 };
 
@@ -24,18 +24,18 @@ const ExpenseOverview: FC<Props> = ({ expenses, onUpdate, onDelete }): React.JSX
     };
 
     // Keep the selected year available even after its last expense is deleted.
-    const years = Array.from(new Set([...expenses.map(expense => expense.date.getFullYear()), ...(filteredYear === 'all' ? [] : [Number(filteredYear)])])).sort((a, b) => b - a);
+    const years = Array.from(new Set([...expenses.map(expense => Number(expense.date.slice(0, 4))), ...(filteredYear === 'all' ? [] : [Number(filteredYear)])])).sort((a, b) => b - a);
     const hasFilters = Boolean(query) || filteredYear !== 'all';
     const clearFilters = () => { setQuery(''); setFilteredYear('all'); };
 
     const filteredExpenses: Expense[] = expenses.filter(expense => {
-        return filteredYear === 'all' || expense.date.getFullYear().toString() === filteredYear;
+        return filteredYear === 'all' || expense.date.slice(0, 4) === filteredYear;
     });
 
     // The year controls summaries and chart data; text search only narrows the list.
     const total = filteredExpenses.reduce((sum, expense) => sum + expense.amount, 0);
     const money = (amount: number) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
-    const visibleExpenses = filteredExpenses.filter(expense => expense.title.toLowerCase().includes(query.trim().toLowerCase())).sort((a, b) => sort === 'highest' ? b.amount - a.amount : b.date.getTime() - a.date.getTime());
+    const visibleExpenses = filteredExpenses.filter(expense => expense.title.toLowerCase().includes(query.trim().toLowerCase())).sort((a, b) => sort === 'highest' ? b.amount - a.amount : b.date.localeCompare(a.date));
 
     return (
         <Card className="expenses">
