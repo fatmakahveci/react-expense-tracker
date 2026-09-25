@@ -6,7 +6,7 @@ import './expense-entry.css';
 import { Expense } from '@/features/expenses/types';
 
 type Props = {
-    onAddExpense: (expense: Expense) => void;
+    onAddExpense: (expense: Expense) => Promise<boolean>;
 }
 
 const ExpenseEntry: FC<Props> = ({ onAddExpense }): React.JSX.Element => {
@@ -15,7 +15,7 @@ const ExpenseEntry: FC<Props> = ({ onAddExpense }): React.JSX.Element => {
             ...enteredExpense,
             id: crypto.randomUUID()
         };
-        onAddExpense(expense);
+        return onAddExpense(expense);
     };
 
     return (

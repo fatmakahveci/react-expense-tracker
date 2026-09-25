@@ -62,7 +62,7 @@ A previously saved empty list remains empty.
 
 ## Data and Privacy
 
-Records are stored in `localStorage` under `expense-tracker:v1`, scoped to the
+Records are stored in `localStorage` under `expense-tracker:v2`, scoped to the
 browser profile and site origin. Using another browser, hostname, or port does
 not share the same records. There is no cloud synchronization or CSV import.
 
@@ -110,7 +110,7 @@ when browser system dependencies are missing.
 | --- | --- |
 | `tests/unit` | Saved-record validation, zero and fractional amounts, CSV formula prefixes, quoted/multiline text, Unicode, and local calendar dates |
 | `tests/integration` | Source-level checks connecting the dashboard, state hook, and entry form; these do not render React components |
-| `tests/e2e` | Creation, persistence, editing/cancellation, deletion/undo, CSV download, search, filters, sorting, validation, empty/corrupt storage, and mobile quick-add focus and overflow |
+| `tests/e2e` | Creation, persistence, editing/cancellation, deletion/undo, CSV download, search, filters, sorting, validation, empty/corrupt storage, concurrent tabs, date migration across time zones, and mobile quick-add focus and overflow |
 
 Browser tests run in isolated contexts. Filter and sorting scenarios use fixed
 records; reload scenarios verify that changes persist. CI runs `npm test`,
@@ -158,19 +158,25 @@ JavaScript Tailwind configuration are no longer needed.
 TypeScript is pinned to 6.0.3 because the unit tests use its `transpileModule`
 API, which is not exposed by the TypeScript 7 package. ESLint remains on 9.39.5:
 Next.js's bundled React, import, and accessibility plugins do not yet declare
-ESLint 10 compatibility. Node type definitions match the Node 22 CI environment.
+ESLint 10 compatibility. Node type definitions are version 26.6.2; CI runs on
+Node.js 22, and the minimum supported runtime remains 22.13.
 
 Upgrade references: [React 19](https://react.dev/blog/2024/04/25/react-19-upgrade-guide),
 [Tailwind CSS 4](https://tailwindcss.com/docs/upgrade-guide), and
 [Next.js ESLint configuration](https://nextjs.org/docs/app/api-reference/config/eslint).
 
-## Known Limitations
+## Dates and Concurrent Tabs
 
-- **Concurrent tabs:** each tab writes its complete expense list without conflict
-  handling. Use one tab for edits to avoid overwriting another tab's changes.
-- **Time zone changes:** expense dates are serialized as timestamps. Changing
-  your system time zone can shift the displayed date, month grouping, and CSV date.
+Dates use `YYYY-MM-DD` and stay unchanged across time zones. Existing v1
+records migrate automatically, preserving the day displayed in the current
+time zone. Their original time zone cannot be recovered; the v1 value remains
+in local storage as a backup.
 
+Tabs on the same origin synchronize changes using the Web Locks API. Each
+operation reads the latest records before saving; stale edits or deletions
+are rejected with a notice. Cancel a conflicting edit and reopen it to retry.
+Use HTTPS (or localhost) for Web Locks support. Where safe shared storage is
+unavailable, changes stay temporary and the app prompts you to export them.
 
 ## Contributing and Security
 

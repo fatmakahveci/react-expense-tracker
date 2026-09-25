@@ -51,7 +51,10 @@ still be handled as potentially sensitive data.
 
 Saved data is validated when loaded. If saved records are invalid, the
 application leaves the stored value untouched and warns that changes are
-temporary. Clearing browser data can remove records; export a backup first.
+temporary. Writes use Web Locks to avoid lost updates between tabs; browsers
+without this API use temporary changes only. Migration retains the original
+`expense-tracker:v1` data alongside the new `expense-tracker:v2` records, so
+clearing expense data requires removing both keys. Clearing browser data can remove records; export a backup first.
 
 ## Deployment and Dependencies
 

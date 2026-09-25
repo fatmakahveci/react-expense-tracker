@@ -9,7 +9,7 @@ type Props = {
     expenses: Expense[];
     filtered: boolean;
     onReset: () => void;
-    onUpdate: (expense: Expense) => void;
+    onUpdate: (expense: Expense, original: Expense) => Promise<boolean>;
     onDelete: (expense: Expense) => void;
 }
 

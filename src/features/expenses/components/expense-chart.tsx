@@ -22,7 +22,7 @@ const ExpenseChart: FC<{ expenses: Expense[] }> = ({ expenses }): React.JSX.Elem
 
     // The parent applies the year filter; "all years" combines matching months.
     for (const expense of expenses) {
-        const expenseMonth = expense.date.getMonth();
+        const expenseMonth = Number(expense.date.slice(5, 7)) - 1;
         chartDataPoints[expenseMonth].value += expense.amount;
     }
     return (

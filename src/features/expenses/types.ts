@@ -1,6 +1,7 @@
 export interface Expense {
-    id?: string;
+    id: string;
     title: string;
     amount: number;
-    date: Date;
+    // A calendar date, not an instant: YYYY-MM-DD.
+    date: string;
 }

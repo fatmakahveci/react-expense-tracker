@@ -1,16 +1,16 @@
 import { test, expect, type Page } from '@playwright/test';
 
 const records = [
-  { id: 'groceries', title: 'Weekly groceries', amount: 30, date: '2025-06-10T12:00:00.000Z' },
-  { id: 'train', title: 'Train tickets', amount: 12.5, date: '2026-02-15T12:00:00.000Z' },
-  { id: 'coffee', title: 'Coffee', amount: 4.25, date: '2026-03-01T12:00:00.000Z' },
+  { id: 'groceries', title: 'Weekly groceries', amount: 30, date: '2025-06-10' },
+  { id: 'train', title: 'Train tickets', amount: 12.5, date: '2026-02-15' },
+  { id: 'coffee', title: 'Coffee', amount: 4.25, date: '2026-03-01' },
 ];
 
 async function openWithStorage(page: Page, raw = JSON.stringify(records)) {
   // Seed only the first navigation; reloads must exercise actual persistence.
   await page.addInitScript(value => {
     if (!sessionStorage.getItem('test-data-initialized')) {
-      localStorage.setItem('expense-tracker:v1', value);
+      localStorage.setItem('expense-tracker:v2', value);
       sessionStorage.setItem('test-data-initialized', 'true');
     }
   }, raw);
@@ -120,12 +120,12 @@ test('mobile quick-add brings the form into view without horizontal overflow', a
 });
 
 test('corrupt saved data stays untouched when temporary changes are made', async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('expense-tracker:v1', '{invalid json'));
+  await page.addInitScript(() => localStorage.setItem('expense-tracker:v2', '{invalid json'));
   await page.goto('/');
   await expect(page.getByRole('status').filter({ hasText: 'Existing storage was left untouched' })).toBeVisible();
   await page.getByPlaceholder('Title', { exact: true }).fill('Temporary expense');
   await page.getByPlaceholder('Amount', { exact: true }).fill('5');
   await page.getByRole('button', { name: 'Add Expense', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Temporary expense', exact: true })).toBeVisible();
-  expect(await page.evaluate(() => localStorage.getItem('expense-tracker:v1'))).toBe('{invalid json');
+  expect(await page.evaluate(() => localStorage.getItem('expense-tracker:v2'))).toBe('{invalid json');
 });

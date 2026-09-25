@@ -26,8 +26,8 @@ test('expenses persist and support editing, deletion, undo and CSV export', asyn
 test('a saved empty list stays empty after reload', async ({ page }) => {
   await page.goto('/');
   // Wait for initial hydration and persistence before replacing saved data.
-  await expect.poll(() => page.evaluate(() => localStorage.getItem('expense-tracker:v1'))).not.toBeNull();
-  await page.evaluate(() => localStorage.setItem('expense-tracker:v1', '[]'));
+  await expect.poll(() => page.evaluate(() => localStorage.getItem('expense-tracker:v2'))).not.toBeNull();
+  await page.evaluate(() => localStorage.setItem('expense-tracker:v2', '[]'));
   await page.reload();
   await expect(page.getByRole('button', { name: /^Delete / })).toHaveCount(0);
 });
