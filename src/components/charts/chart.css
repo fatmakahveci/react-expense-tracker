@@ -1,0 +1,2 @@
+.chart { height: 160px; display: flex; justify-content: space-around; gap: 14px; padding: 10px 0 0; background: repeating-linear-gradient(to top, transparent 0, transparent 34px, var(--border) 35px, transparent 36px); }
+@media (max-width: 540px) { .chart { gap: 7px; } }
