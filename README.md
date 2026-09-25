@@ -82,7 +82,7 @@ See the [security policy](SECURITY.md) for vulnerability reporting and data-hand
 | `npm run build` | Create a production build and check TypeScript |
 | `npm start` | Serve an existing production build |
 | `npm test` | Run unit tests and source wiring checks |
-| `npx tsc --noEmit` | Run a standalone TypeScript check |
+| `npm run typecheck` | Generate Next.js type declarations, then check TypeScript |
 | `npx playwright test` | Run browser tests against a production build |
 | `npm run lint` | Run ESLint with the Next.js and TypeScript flat configurations |
 

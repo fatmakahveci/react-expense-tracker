@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { Buffer } from 'node:buffer';
 
 test('pages reject framing and disable MIME sniffing without exposing the framework header', async ({ request }) => {
   for (const path of ['/', '/missing-security-test-page']) {
