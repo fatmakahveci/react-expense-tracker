@@ -19,8 +19,10 @@ jobs:
         with:
           node-version: "22"
       - run: npm ci
+      - run: npm audit --audit-level=low
+      - run: npm run lint
       - run: npm test
-      - run: npx tsc --noEmit
+      - run: npm run typecheck
       - run: npm run build
       - run: npx playwright install --with-deps chromium
       - run: npx playwright test

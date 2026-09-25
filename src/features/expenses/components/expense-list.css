@@ -1,0 +1,5 @@
+.expenses-list { list-style: none; padding: 0; margin: 8px 0 0; }
+.expenses-list__fallback { padding: 32px 16px; text-align: center; color: var(--muted); }
+.empty-symbol { display: grid; place-items: center; width: 48px; height: 48px; margin: 0 auto 16px; border-radius: 50%; background: #edf4ef; color: var(--accent); font-size: 28px; }
+.expenses-list__fallback h3 { font-size: 16px; color: var(--ink); margin-bottom: 8px; }
+.expenses-list__fallback p { font-size: 13px; line-height: 1.7; margin-bottom: 16px; }

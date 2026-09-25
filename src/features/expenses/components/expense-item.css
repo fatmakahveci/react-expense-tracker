@@ -1,0 +1,21 @@
+.expense-item { display: flex; align-items: center; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--border); border-radius: 0; }
+.expenses-list li:last-child .expense-item { border-bottom: none; }
+.expense-item__description { display: flex; align-items: center; flex: 1; min-width: 0; gap: 12px; }
+.expense-item h2 { flex: 1; font-size: 14px; font-weight: 600; margin: 0; overflow-wrap: anywhere; }
+.expense-item__price { font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.expense-item__actions { display: flex; gap: 4px; }
+.expense-item__actions button { background: transparent; padding: 8px 10px; border-color: transparent; font-size: 12px; color: var(--muted); }
+.expense-item__actions button:hover { background: var(--surface-soft); color: var(--ink); }
+.expense-item__actions button:last-child:hover { color: #a12d2d; background: #fff0ee; }
+.expense-edit { margin: 16px 0; padding: 20px; background: #f5f8f5; border: 1px solid #c5d8cb; border-radius: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.expense-edit h3 { grid-column: 1 / -1; font-size: 15px; margin: 0; }
+.expense-edit label { display: grid; min-width: 0; gap: 8px; font-size: 12px; font-weight: 600; }
+.expense-edit label:first-of-type { grid-column: 1 / -1; }
+.edit-actions { grid-column: 1 / -1; display: flex; gap: 8px; }
+@media (max-width: 1100px) and (min-width: 851px), (max-width: 600px) {
+  .expense-item { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 10px 12px; }
+  .expense-item__actions { grid-column: 2; }
+  .expense-item__actions button { background: var(--surface-soft); }
+  .expense-item__description { align-items: flex-start; }
+  .expense-item__price { margin-left: auto; }
+}
